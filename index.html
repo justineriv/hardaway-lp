@@ -299,11 +299,6 @@ strong{font-weight:600;color:inherit}
   color:var(--rose-text);background:var(--champagne-light);
   border:1px solid rgba(157,88,68,.18);border-radius:var(--radius-pill);padding:.24rem .7rem;
 }
-.ph-inline{
-  display:block;background:#fff8ec;border:1px dashed rgba(90,62,32,.4);border-radius:var(--radius-sm);
-  padding:.85rem 1rem;font-size:.85rem;color:var(--warm-brown);font-style:normal;
-}
-.ph-inline b{display:block;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.3rem}
 
 .elf-wrap{background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:var(--space-lg);min-height:120px}
 
@@ -315,24 +310,27 @@ strong{font-weight:600;color:inherit}
 .fin__list li svg{width:18px;height:18px;flex:none;margin-top:.3rem;color:var(--champagne)}
 
 /* ---------- Location ---------- */
-.loc__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.95fr);gap:var(--space-4xl);align-items:start}
+.loc__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.95fr);gap:var(--space-4xl);align-items:stretch}
+.loc__grid > div{display:flex;flex-direction:column}
 .addr-line{font-size:1.12rem;margin-top:1.3rem}
 .dir-list{list-style:none;margin:1.3rem 0 0;padding:0;display:grid;gap:1.05rem}
 .dir-list li{display:flex;gap:.9rem;align-items:flex-start;font-size:1.04rem;line-height:1.62;color:var(--ink-soft)}
 .dir-list li svg{width:22px;height:22px;flex:none;margin-top:.28rem;color:var(--terracotta-deep)}
 .dir-list strong{color:var(--ink)}
-.map-embed{width:100%;aspect-ratio:4/3;border:0;border-radius:var(--radius-lg);box-shadow:var(--shadow-md);display:block}
 .here-card{
   background:var(--white);border:1px solid var(--line);border-radius:var(--radius-lg);
-  box-shadow:var(--shadow-sm);padding:var(--space-xl);margin-top:var(--space-lg);
+  box-shadow:var(--shadow-sm);padding:var(--space-xl);
+  flex:1;display:flex;flex-direction:column;
 }
+/* buttons sit on the bottom edge so the card reads as deliberate at full height */
+.here-card .btn-row{margin-top:auto;padding-top:var(--space-lg)}
+.here-list{margin:0;flex:1;display:flex;flex-direction:column;justify-content:space-evenly;gap:.4rem}
 .here-card h3{font-size:1.28rem;margin-bottom:1.1rem}
 .here-row{display:grid;grid-template-columns:96px 1fr;gap:1rem;padding:.9rem 0;border-top:1px solid var(--line);align-items:start}
 .here-row:first-of-type{border-top:0;padding-top:0}
 .here-row dt{font-size:.85rem;font-weight:600;color:var(--ink);letter-spacing:.02em}
 .here-row dd{margin:0;font-size:1.02rem;color:var(--ink-soft);line-height:1.55}
 .here-row dd a{font-weight:600;color:var(--warm-brown);border-bottom:2px solid var(--terracotta)}
-.here-card .btn-row{margin-top:1.5rem}
 
 /* ---------- FAQ ---------- */
 .faq{max-width:840px;margin-inline:auto}
@@ -427,6 +425,7 @@ strong{font-weight:600;color:inherit}
   .hero__copy{max-width:none}
   .cards,.steps{grid-template-columns:1fr}
   .split,.fin__grid,.close-band__grid,.loc__grid{grid-template-columns:1fr;gap:var(--space-2xl)}
+  .here-card{flex:0 1 auto}
   .rail__item{font-size:.85rem;padding-inline:.55rem;gap:.45rem}
   .rail__item svg{width:18px;height:18px}
   .footer__top{grid-template-columns:1fr 1fr}
@@ -894,13 +893,8 @@ strong{font-weight:600;color:inherit}
       </div>
 
       <div class="faq__item">
-        <h3 style="margin:0"><button class="faq__q" type="button" aria-expanded="false">Is there a fee for the consultation?</button></h3>
-        <div class="faq__a"><div class="faq__a-inner"><span class="ph-inline"><b>Placeholder — answer to be supplied</b>The live page does not state whether the consultation carries a fee. This is the most common reason a visitor abandons a surgical enquiry form, so it is worth answering before launch.</span></div></div>
-      </div>
-
-      <div class="faq__item">
         <h3 style="margin:0"><button class="faq__q" type="button" aria-expanded="false">How do I know whether I am a candidate?</button></h3>
-        <div class="faq__a"><div class="faq__a-inner"><span class="ph-inline"><b>Placeholder — answer to be supplied and clinically reviewed</b>Candidacy wording must stay general and must not read as individual medical advice.</span></div></div>
+        <div class="faq__a"><div class="faq__a-inner">That is what the consultation is for. Dr. Hardaway reviews your medical history, examines you in person, and explains which options suit your goals, what each one involves, and what recovery looks like. Suitability is decided in person, never from a form.</div></div>
       </div>
     </div>
   </div>
@@ -929,13 +923,9 @@ strong{font-weight:600;color:inherit}
     </div>
 
     <div class="reveal">
-      <iframe class="map-embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen
-              title="Map to Aesthetic Plastic Surgery &amp; Laser Center, 27920 Orchard Lake Rd, Farmington Hills, MI 48334"
-              src="https://www.google.com/maps?q=27920%20Orchard%20Lake%20Rd%2C%20Farmington%20Hills%2C%20MI%2048334&amp;output=embed"></iframe>
-
       <div class="here-card">
         <h3>Getting here</h3>
-        <dl style="margin:0">
+        <dl class="here-list">
           <div class="here-row">
             <dt>Address</dt>
             <dd>27920 Orchard Lake Rd<br>Farmington Hills, MI 48334</dd>
@@ -943,6 +933,10 @@ strong{font-weight:600;color:inherit}
           <div class="here-row">
             <dt>Phone</dt>
             <dd><a href="tel:2487800558">(248) 780-0558</a></dd>
+          </div>
+          <div class="here-row">
+            <dt>Facility</dt>
+            <dd>Your procedure takes place in our on-site QUAD&nbsp;A accredited surgical center</dd>
           </div>
         </dl>
         <div class="btn-row">
