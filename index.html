@@ -203,13 +203,12 @@ strong{font-weight:600;color:inherit}
 
 /* ---------- Credential rail ---------- */
 .rail{background:var(--warm-brown);color:rgba(255,255,255,.82);padding-block:1.7rem;border-bottom:3px solid var(--terracotta)}
-.rail__row{display:flex;flex-wrap:nowrap;align-items:stretch;gap:0}
+.rail__row{display:flex;flex-wrap:nowrap;align-items:stretch;justify-content:space-between;gap:0}
 .rail__item{
-  flex:1 1 0;display:flex;align-items:center;justify-content:center;gap:.6rem;
-  font-size:.95rem;font-weight:500;color:#fff;white-space:nowrap;
-  padding:.1rem .85rem;border-left:1px solid rgba(255,255,255,.26);
+  flex:0 1 auto;display:flex;align-items:center;gap:.6rem;
+  font-size:.95rem;font-weight:500;color:#fff;white-space:nowrap;padding:.1rem 0;
 }
-.rail__item:first-child{border-left:0}
+.rail__sep{flex:0 0 1px;align-self:stretch;background:rgba(255,255,255,.26)}
 .rail__item svg{width:20px;height:20px;flex:none;color:var(--champagne)}
 
 /* ---------- Benefit cards ---------- */
@@ -310,8 +309,7 @@ strong{font-weight:600;color:inherit}
 .fin__list li svg{width:18px;height:18px;flex:none;margin-top:.3rem;color:var(--champagne)}
 
 /* ---------- Location ---------- */
-.loc__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.95fr);gap:var(--space-4xl);align-items:stretch}
-.loc__grid > div{display:flex;flex-direction:column}
+.loc__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.95fr);gap:var(--space-4xl);align-items:start}
 .addr-line{font-size:1.12rem;margin-top:1.3rem}
 .dir-list{list-style:none;margin:1.3rem 0 0;padding:0;display:grid;gap:1.05rem}
 .dir-list li{display:flex;gap:.9rem;align-items:flex-start;font-size:1.04rem;line-height:1.62;color:var(--ink-soft)}
@@ -320,13 +318,11 @@ strong{font-weight:600;color:inherit}
 .here-card{
   background:var(--white);border:1px solid var(--line);border-radius:var(--radius-lg);
   box-shadow:var(--shadow-sm);padding:var(--space-xl);
-  flex:1;display:flex;flex-direction:column;
 }
-/* buttons sit on the bottom edge so the card reads as deliberate at full height */
-.here-card .btn-row{margin-top:auto;padding-top:var(--space-lg)}
-.here-list{margin:0;flex:1;display:flex;flex-direction:column;justify-content:space-evenly;gap:.4rem}
+.here-card .btn-row{margin-top:var(--space-lg)}
+.here-list{margin:0}
 .here-card h3{font-size:1.28rem;margin-bottom:1.1rem}
-.here-row{display:grid;grid-template-columns:96px 1fr;gap:1rem;padding:.9rem 0;border-top:1px solid var(--line);align-items:start}
+.here-row{display:grid;grid-template-columns:88px 1fr;gap:1rem;padding:.75rem 0;border-top:1px solid var(--line);align-items:start}
 .here-row:first-of-type{border-top:0;padding-top:0}
 .here-row dt{font-size:.85rem;font-weight:600;color:var(--ink);letter-spacing:.02em}
 .here-row dd{margin:0;font-size:1.02rem;color:var(--ink-soft);line-height:1.55}
@@ -425,8 +421,7 @@ strong{font-weight:600;color:inherit}
   .hero__copy{max-width:none}
   .cards,.steps{grid-template-columns:1fr}
   .split,.fin__grid,.close-band__grid,.loc__grid{grid-template-columns:1fr;gap:var(--space-2xl)}
-  .here-card{flex:0 1 auto}
-  .rail__item{font-size:.85rem;padding-inline:.55rem;gap:.45rem}
+  .rail__item{font-size:.85rem;gap:.45rem}
   .rail__item svg{width:18px;height:18px}
   .footer__top{grid-template-columns:1fr 1fr}
 }
@@ -440,8 +435,9 @@ strong{font-weight:600;color:inherit}
   .hero__scrim{background:linear-gradient(180deg,rgba(30,21,15,.74) 0%,rgba(30,21,15,.84) 52%,rgba(30,21,15,.92) 100%)}
   .rail{padding-block:1.15rem}
   .rail__row{flex-wrap:wrap;row-gap:.85rem}
-  .rail__item{flex:1 1 45%;justify-content:flex-start;white-space:normal;font-size:.82rem;line-height:1.35;text-align:left}
-  .rail__item:nth-child(odd){border-left:0;padding-left:0}
+  .rail__sep{display:none}
+  .rail__item{flex:1 1 45%;white-space:normal;font-size:.82rem;line-height:1.35;text-align:left}
+  .rail__item:nth-child(4n+3){border-left:1px solid rgba(255,255,255,.26);padding-left:.9rem}
   .rev-grid{grid-template-columns:1fr 1fr}
   .field__row{grid-template-columns:1fr}
   .footer__top{grid-template-columns:1fr}
@@ -575,8 +571,11 @@ strong{font-weight:600;color:inherit}
 <section class="rail">
   <div class="container rail__row">
     <span class="rail__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></svg>American Board of Plastic Surgery</span>
+    <span class="rail__sep" aria-hidden="true"></span>
     <span class="rail__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>QUAD A Accredited Surgical Center</span>
+    <span class="rail__sep" aria-hidden="true"></span>
     <span class="rail__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6z"/></svg>Fellow, American College of Surgeons</span>
+    <span class="rail__sep" aria-hidden="true"></span>
     <span class="rail__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>20+ Years in Michigan</span>
   </div>
 </section>
