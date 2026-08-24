@@ -203,10 +203,14 @@ strong{font-weight:600;color:inherit}
 
 /* ---------- Credential rail ---------- */
 .rail{background:var(--warm-brown);color:rgba(255,255,255,.82);padding-block:1.7rem;border-bottom:3px solid var(--terracotta)}
-.rail__item svg{color:var(--pink-light);width:22px;height:22px}
-.rail__row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2rem;align-items:center}
-.rail__item{display:flex;align-items:center;gap:.7rem;font-size:1.02rem;font-weight:500;color:#fff}
-.rail__item svg{width:22px;height:22px;flex:none;color:var(--champagne)}
+.rail__row{display:flex;flex-wrap:nowrap;align-items:stretch;gap:0}
+.rail__item{
+  flex:1 1 0;display:flex;align-items:center;justify-content:center;gap:.6rem;
+  font-size:.95rem;font-weight:500;color:#fff;white-space:nowrap;
+  padding:.1rem .85rem;border-left:1px solid rgba(255,255,255,.26);
+}
+.rail__item:first-child{border-left:0}
+.rail__item svg{width:20px;height:20px;flex:none;color:var(--champagne)}
 
 /* ---------- Benefit cards ---------- */
 .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-lg)}
@@ -423,7 +427,8 @@ strong{font-weight:600;color:inherit}
   .hero__copy{max-width:none}
   .cards,.steps{grid-template-columns:1fr}
   .split,.fin__grid,.close-band__grid,.loc__grid{grid-template-columns:1fr;gap:var(--space-2xl)}
-  .rail__row{justify-content:flex-start;gap:.8rem 1.6rem}
+  .rail__item{font-size:.85rem;padding-inline:.55rem;gap:.45rem}
+  .rail__item svg{width:18px;height:18px}
   .footer__top{grid-template-columns:1fr 1fr}
 }
 @media (max-width:820px){
@@ -434,6 +439,10 @@ strong{font-weight:600;color:inherit}
   .header__right .btn{display:none}
   .hero{padding-top:calc(var(--header-h) + 36px);padding-bottom:44px}
   .hero__scrim{background:linear-gradient(180deg,rgba(30,21,15,.74) 0%,rgba(30,21,15,.84) 52%,rgba(30,21,15,.92) 100%)}
+  .rail{padding-block:1.15rem}
+  .rail__row{flex-wrap:wrap;row-gap:.85rem}
+  .rail__item{flex:1 1 45%;justify-content:flex-start;white-space:normal;font-size:.82rem;line-height:1.35;text-align:left}
+  .rail__item:nth-child(odd){border-left:0;padding-left:0}
   .rev-grid{grid-template-columns:1fr 1fr}
   .field__row{grid-template-columns:1fr}
   .footer__top{grid-template-columns:1fr}
