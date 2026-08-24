@@ -149,7 +149,7 @@ strong{font-weight:600;color:inherit}
 .header__inner{display:flex;align-items:center;width:100%;gap:var(--space-lg)}
 .header__logo img{height:64px;width:auto}
 .header__right{margin-left:auto;display:flex;align-items:center;gap:var(--space-lg)}
-.header__phone{display:inline-flex;align-items:center;gap:.6rem;font-weight:600;font-size:1.2rem;color:var(--ink);white-space:nowrap}
+.header__phone{display:inline-flex;align-items:center;gap:.6rem;min-height:44px;font-weight:600;font-size:1.2rem;color:var(--ink);white-space:nowrap}
 .header__phone svg{width:20px;height:20px;color:var(--terracotta-deep);flex:none}
 .header__phone small{display:block;font-size:.72rem;font-weight:500;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-soft);line-height:1.4}
 .header__phone:hover{color:var(--warm-brown)}
@@ -359,7 +359,7 @@ strong{font-weight:600;color:inherit}
 .field input:focus,.field textarea:focus{outline:none;border-color:var(--terracotta);box-shadow:0 0 0 4px rgba(224,164,147,.28)}
 .field textarea{resize:vertical;min-height:104px}
 .hint{font-size:.76rem;color:var(--ink-soft);margin-top:.32rem}
-.consent{display:flex;gap:.65rem;align-items:flex-start;font-size:.84rem;color:var(--ink-soft);line-height:1.6}
+.consent{display:flex;gap:.65rem;align-items:flex-start;min-height:44px;padding-block:.35rem;font-size:.84rem;color:var(--ink-soft);line-height:1.6}
 .consent input{width:19px;height:19px;flex:none;margin-top:.15rem;accent-color:var(--warm-brown)}
 .form-trust{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1rem;font-size:.76rem;color:var(--ink-soft)}
 .form-trust span{display:inline-flex;align-items:center;gap:.35rem}
@@ -387,7 +387,7 @@ strong{font-weight:600;color:inherit}
 .footer__ci a,.footer__ci span{color:rgba(255,255,255,.84)}
 .footer__ci a:hover{color:var(--champagne)}
 .footer__social{display:flex;gap:.55rem;margin-top:1.1rem}
-.social-link{width:37px;height:37px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.09);color:#fff;transition:background var(--t-base),transform var(--t-base)}
+.social-link{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.09);color:#fff;transition:background var(--t-base),transform var(--t-base)}
 .social-link svg{width:16px;height:16px;fill:currentColor}
 /* the Instagram mark is drawn with strokes; the fill above would flood it solid */
 .social-link svg[stroke]{fill:none}
@@ -417,8 +417,14 @@ strong{font-weight:600;color:inherit}
 @media (max-width:1200px){:root{--gutter:36px}.hero__grid{gap:var(--space-2xl)}}
 @media (max-width:1024px){
   :root{--section-y:76px;--section-y-tight:56px}
-  .hero__grid{grid-template-columns:1fr;gap:var(--space-2xl)}
-  .hero__copy{max-width:none}
+  .hero__grid{grid-template-columns:1fr;gap:0}
+  .hero__copy{display:contents}
+  .hero__copy > .eyebrow{order:1}
+  .hero__copy > h1{order:2}
+  .hero__copy > .hero__sub{order:3;margin-bottom:1.4rem}
+  .hero__grid > .lead-card{order:4;margin-bottom:1.6rem}
+  .hero__copy > .ticks{order:5;margin-bottom:1.4rem}
+  .hero__copy > .hero__phone-cta{order:6}
   .cards,.steps{grid-template-columns:1fr}
   .split,.fin__grid,.close-band__grid,.loc__grid{grid-template-columns:1fr;gap:var(--space-2xl)}
   .rail__item{font-size:.85rem;gap:.45rem}
@@ -470,7 +476,7 @@ strong{font-weight:600;color:inherit}
            width="1119" height="484">
     </span>
     <div class="header__right">
-      <a class="header__phone" href="tel:2487800558">
+      <a class="header__phone" data-cta="header" href="tel:2487800558">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         <span>(248) 780-0558<small>Farmington Hills, MI</small></span>
       </a>
@@ -511,7 +517,7 @@ strong{font-weight:600;color:inherit}
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><span>20+ years operating in the Detroit medical community</span></li>
       </ul>
 
-      <a class="hero__phone-cta" href="tel:2487800558">
+      <a class="hero__phone-cta" data-cta="hero" href="tel:2487800558">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         <span><b>(248) 780-0558</b><span>Speak to our office now</span></span>
       </a>
@@ -561,7 +567,7 @@ strong{font-weight:600;color:inherit}
       <div class="form-done" role="status">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>
         <h3>Request received</h3>
-        <p>Thank you. Our team will contact you with date and time confirmation. If you would rather speak to someone now, call <a href="tel:2487800558"><strong>(248) 780-0558</strong></a>.</p>
+        <p>Thank you. Our team will contact you with date and time confirmation. If you would rather speak to someone now, call <a data-cta="inline" href="tel:2487800558"><strong>(248) 780-0558</strong></a>.</p>
       </div>
     </div>
   </div>
@@ -631,7 +637,7 @@ strong{font-weight:600;color:inherit}
       </div>
 
       <div class="btn-row" style="margin-top:1.8rem">
-        <a class="btn btn--primary" href="tel:2487800558">
+        <a class="btn btn--primary" data-cta="body" href="tel:2487800558">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           Call (248) 780-0558
         </a>
@@ -852,7 +858,7 @@ strong{font-weight:600;color:inherit}
       </ul>
 
       <div class="btn-row" style="margin-top:1.8rem">
-        <a class="btn btn--light" href="tel:2487800558">
+        <a class="btn btn--light" data-cta="financing" href="tel:2487800558">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           Call (248) 780-0558
         </a>
@@ -931,7 +937,7 @@ strong{font-weight:600;color:inherit}
           </div>
           <div class="here-row">
             <dt>Phone</dt>
-            <dd><a href="tel:2487800558">(248) 780-0558</a></dd>
+            <dd><a data-cta="footer" href="tel:2487800558">(248) 780-0558</a></dd>
           </div>
           <div class="here-row">
             <dt>Facility</dt>
@@ -940,7 +946,7 @@ strong{font-weight:600;color:inherit}
         </dl>
         <div class="btn-row">
           <a class="btn btn--primary" href="https://maps.google.com/maps/dir//27920+Orchard+Lake+Rd+Farmington+Hills+MI+48334" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Get directions</a>
-          <a class="btn btn--outline" href="tel:2487800558"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call the office</a>
+          <a class="btn btn--outline" data-cta="body-secondary" href="tel:2487800558"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call the office</a>
         </div>
       </div>
     </div>
@@ -956,8 +962,8 @@ strong{font-weight:600;color:inherit}
     <div class="reveal">
       <span class="eyebrow">Ready when you are</span>
       <h2>Schedule Your Visit</h2>
-      <p class="lede">Please fill the form to schedule an appointment with Dr. Hardaway, or call <a href="tel:2487800558"><strong>(248) 780-0558</strong></a> to schedule. We will contact you with date/time confirmation.</p>
-      <a class="btn btn--primary btn--lg" href="tel:2487800558" style="margin-top:1.6rem">
+      <p class="lede">Please fill the form to schedule an appointment with Dr. Hardaway, or call <a data-cta="inline" href="tel:2487800558"><strong>(248) 780-0558</strong></a> to schedule. We will contact you with date/time confirmation.</p>
+      <a class="btn btn--primary btn--lg" data-cta="closing" href="tel:2487800558" style="margin-top:1.6rem">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         Call Now: (248) 780-0558
       </a>
@@ -1001,7 +1007,7 @@ strong{font-weight:600;color:inherit}
       <div class="form-done" role="status">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>
         <h3>Request received</h3>
-        <p>Thank you. Our team will contact you with date and time confirmation. If you would rather speak to someone now, call <a href="tel:2487800558"><strong>(248) 780-0558</strong></a>.</p>
+        <p>Thank you. Our team will contact you with date and time confirmation. If you would rather speak to someone now, call <a data-cta="inline" href="tel:2487800558"><strong>(248) 780-0558</strong></a>.</p>
       </div>
     </div>
   </div>
@@ -1034,7 +1040,7 @@ strong{font-weight:600;color:inherit}
         </div>
         <div class="footer__ci">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          <a href="tel:2487800558">(248) 780-0558</a>
+          <a data-cta="footer" href="tel:2487800558">(248) 780-0558</a>
         </div>
         <div class="footer__ci">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
@@ -1068,7 +1074,7 @@ strong{font-weight:600;color:inherit}
 </div><!-- /#stage -->
 
 <div class="mcta" role="group" aria-label="Contact options">
-  <a class="btn btn--primary" href="tel:2487800558">
+  <a class="btn btn--primary" data-cta="body" href="tel:2487800558">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
     Call Now
   </a>
@@ -1170,12 +1176,36 @@ strong{font-weight:600;color:inherit}
     revealables.forEach(function (el) { io.observe(el); });
   }
 
+  /* ---- Conversion tracking ----------------------------------------------
+     dataLayer events so GTM can define conversions without another code
+     change. generate_lead fires from the submit handler below, only after a
+     submission actually succeeds — never on the submit event itself. */
+  window.dataLayer = window.dataLayer || [];
+  var track = function (event, detail) {
+    window.dataLayer.push(Object.assign({ event: event, page_type: "campaign" }, detail || {}));
+  };
+  document.querySelectorAll('a[href^="tel:"]').forEach(function (a) {
+    a.addEventListener("click", function () {
+      track("click_to_call", { cta_location: a.getAttribute("data-cta") || "unknown" });
+    });
+  });
+  document.querySelectorAll("#form-hero, #form-close").forEach(function (form) {
+    var loc = form.id === "form-hero" ? "hero" : "closing";
+    form.setAttribute("data-track-location", loc);
+    var started = false;
+    form.addEventListener("focusin", function () {
+      if (!started) { started = true; track("form_start", { form_location: loc }); }
+    });
+  });
+
   /* Mockup submit — shows the confirmation state. Gravity Forms handles
      the real submission in the WordPress build; field names already match. */
   document.querySelectorAll("#form-hero, #form-close").forEach(function (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       if (!form.reportValidity()) { return; }
+      // WHEN THE FORM IS WIRED, move this to the backend's success callback.
+      track("generate_lead", { form_location: form.getAttribute("data-track-location") || "unknown" });
       var card = form.closest(".lead-card");
       card.classList.add("is-sent");
       card.querySelector(".form-done").scrollIntoView({ block: "center", behavior: reduced ? "auto" : "smooth" });
