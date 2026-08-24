@@ -42,7 +42,9 @@
   --white:#ffffff;
   --line:rgba(103,78,71,.16);
 
-  --container-max:1320px; --gutter:56px;
+  --container-max:1280px; --gutter:56px;
+  /* the page sits on a centred sheet, like a printed leaf */
+  --stage-max:1280px; --backdrop:#d6c8bd;
 
   --space-sm:.5rem; --space-md:1rem; --space-lg:1.5rem;
   --space-xl:2rem; --space-2xl:3rem; --space-3xl:4rem; --space-4xl:6rem;
@@ -64,10 +66,17 @@
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 14px)}
 body{
-  margin:0;background:var(--white);color:var(--ink-soft);
+  margin:0;background:var(--backdrop);color:var(--ink-soft);
   font-family:var(--font-sans);font-size:17px;font-weight:300;line-height:1.7;
   -webkit-font-smoothing:antialiased;overflow-x:hidden;
 }
+/* ---------- The sheet ---------- */
+#stage{
+  max-width:var(--stage-max);margin:0 auto;background:var(--white);min-height:100vh;
+  box-shadow:0 0 0 1px rgba(43,33,26,.07),0 30px 80px rgba(43,33,26,.18);
+  overflow-x:clip;
+}
+
 img,svg,iframe{max-width:100%;display:block}
 img{height:auto}
 a{color:var(--warm-brown);text-decoration:none;transition:color var(--t-fast)}
@@ -130,7 +139,8 @@ strong{font-weight:600;color:inherit}
 
 /* ---------- Header — logo + phone only. No nav: this is a campaign page. ---------- */
 .header{
-  position:fixed;inset:0 0 auto 0;z-index:900;height:var(--header-h);display:flex;align-items:center;
+  position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:var(--stage-max);
+  z-index:900;height:var(--header-h);display:flex;align-items:center;
   background:rgba(253,250,246,.92);backdrop-filter:saturate(1.5) blur(14px);
   -webkit-backdrop-filter:saturate(1.5) blur(14px);
   border-bottom:1px solid var(--line);transition:box-shadow var(--t-base);
@@ -393,7 +403,8 @@ strong{font-weight:600;color:inherit}
 
 /* ---------- Sticky mobile CTA ---------- */
 .mcta{
-  position:fixed;left:0;right:0;bottom:0;z-index:950;display:none;gap:.55rem;
+  position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:var(--stage-max);
+  z-index:950;display:none;gap:.55rem;
   padding:.6rem .75rem calc(.6rem + env(safe-area-inset-bottom));
   background:rgba(253,250,246,.97);backdrop-filter:blur(12px);
   border-top:1px solid var(--line);box-shadow:0 -6px 24px rgba(43,33,26,.12);
@@ -463,6 +474,8 @@ strong{font-weight:600;color:inherit}
     </div>
   </div>
 </header>
+
+<div id="stage">
 
 <main id="main">
 
@@ -1049,6 +1062,8 @@ strong{font-weight:600;color:inherit}
     </div>
   </div>
 </footer>
+
+</div><!-- /#stage -->
 
 <div class="mcta" role="group" aria-label="Contact options">
   <a class="btn btn--primary" href="tel:2487800558">
