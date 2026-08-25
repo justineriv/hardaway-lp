@@ -367,6 +367,20 @@ strong{font-weight:600;color:inherit}
 .form-trust{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1rem;font-size:.76rem;color:var(--ink-soft)}
 .form-trust span{display:inline-flex;align-items:center;gap:.35rem}
 .form-trust svg{width:14px;height:14px;color:var(--terracotta-deep);flex:none}
+/* The lower-commitment path. This ICP is documented as taking years and several
+   consultations to commit, and a page whose only ask is "book a consultation"
+   gives the not-ready majority nothing to do but leave. It points at the message
+   field the closing form already carries — it surfaces an existing option and
+   promises nothing new about how the office replies. Subordinate on purpose:
+   a text link, never a second button. */
+.lead-card__alt{
+  margin:1.1rem 0 0;padding-top:1rem;border-top:1px solid var(--line);
+  font-size:.86rem;color:var(--ink-soft);text-align:center;line-height:1.5;
+}
+.lead-card__alt a{color:var(--rose-text);font-weight:600;border-bottom:1px solid currentColor}
+.lead-card__alt a:hover{color:var(--warm-brown)}
+/* Sets up the closing form for whoever arrived by the question link above. */
+.lead-card__lead{margin:0 0 .9rem;font-size:.94rem;color:var(--ink-soft);line-height:1.5}
 .form-done{
   display:none;text-align:center;padding:1.5rem .5rem;
 }
@@ -629,6 +643,8 @@ strong{font-weight:600;color:inherit}
         </div>
       </form>
 
+      <p class="lead-card__alt">Still deciding? You can <a href="#schedule">send a question instead</a> &mdash; no appointment needed.</p>
+
       <div class="form-done" role="status">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>
         <h3>Request received</h3>
@@ -883,6 +899,7 @@ strong{font-weight:600;color:inherit}
     </div>
 
     <div class="lead-card reveal">
+      <p class="lead-card__lead">Book a consultation, or just ask a question. Both reach the same team.</p>
       <p class="req-legend"><i>*</i> indicates required fields</p>
       <!-- NOT WIRED — see the note on the hero form. -->
       <form id="form-close" novalidate>
@@ -904,7 +921,7 @@ strong{font-weight:600;color:inherit}
           </div>
         </div>
         <div class="field">
-          <label for="c-msg">How can we help you? <span style="font-weight:400;color:var(--ink-soft)">(optional)</span></label>
+          <label for="c-msg">Your question, or anything you would like us to know <span style="font-weight:400;color:var(--ink-soft)">(optional)</span></label>
           <textarea id="c-msg" name="input_21" maxlength="750" rows="3"></textarea>
           <p class="hint">Please do not include detailed medical history here &mdash; Dr. Hardaway reviews that with you in person.</p>
         </div>
