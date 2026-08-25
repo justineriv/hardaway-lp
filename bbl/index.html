@@ -160,6 +160,9 @@ strong{font-weight:600;color:inherit}
    ========================================================================== */
 .hero{position:relative;padding-top:calc(var(--header-h) + 56px);padding-bottom:64px;isolation:isolate;overflow:hidden}
 .hero__bg{position:absolute;inset:0;z-index:-2}
+/* object-position is set per page, inline. The hero is a wide band and several
+   of these sources are portrait, so the crop has to follow the subject rather
+   than sit at one hardcoded point. This value is the fallback. */
 .hero__bg img{width:100%;height:100%;object-fit:cover;object-position:64% 16%}
 .hero__scrim{
   position:absolute;inset:0;z-index:-1;
@@ -602,7 +605,8 @@ strong{font-weight:600;color:inherit}
   <div class="hero__bg">
     <img fetchpriority="high" decoding="async"
          src="https://michellehardawaymd.com/wp-content/uploads/2024/07/Beautiful-Woman-with-Butt-after-BBL-scaled.jpg"
-         width="2560" height="1409" alt="">
+         width="2560" height="1409"
+         style="object-position:64% 16%" alt="">
   </div>
   <div class="hero__scrim"></div>
 

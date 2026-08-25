@@ -160,6 +160,9 @@ strong{font-weight:600;color:inherit}
    ========================================================================== */
 .hero{position:relative;padding-top:calc(var(--header-h) + 56px);padding-bottom:64px;isolation:isolate;overflow:hidden}
 .hero__bg{position:absolute;inset:0;z-index:-2}
+/* object-position is set per page, inline. The hero is a wide band and several
+   of these sources are portrait, so the crop has to follow the subject rather
+   than sit at one hardcoded point. This value is the fallback. */
 .hero__bg img{width:100%;height:100%;object-fit:cover;object-position:64% 16%}
 .hero__scrim{
   position:absolute;inset:0;z-index:-1;
@@ -601,14 +604,13 @@ strong{font-weight:600;color:inherit}
 <section class="hero">
   <div class="hero__bg">
     <img fetchpriority="high" decoding="async"
-         src="https://michellehardawaymd.com/wp-content/uploads/2020/04/rhinoplasty-scaled-2-2048x1366.jpg"
-         srcset="https://michellehardawaymd.com/wp-content/uploads/2020/04/rhinoplasty-scaled-2-768x512.jpg 768w,
-                 https://michellehardawaymd.com/wp-content/uploads/2020/04/rhinoplasty-scaled-2-1024x683.jpg 1024w,
-                 https://michellehardawaymd.com/wp-content/uploads/2020/04/rhinoplasty-scaled-2-1536x1024.jpg 1536w,
-                 https://michellehardawaymd.com/wp-content/uploads/2020/04/rhinoplasty-scaled-2-2048x1366.jpg 2048w,
-                 https://michellehardawaymd.com/wp-content/uploads/2020/04/rhinoplasty-scaled-2-2048x1366.jpg 2048w"
+         src="../img/nose-job-1536.jpg"
+         srcset="../img/nose-job-768.jpg 768w,
+                 ../img/nose-job-1152.jpg 1152w,
+                 ../img/nose-job-1536.jpg 1536w"
          sizes="100vw"
-         width="2048" height="1366" alt="">
+         width="1536" height="2308"
+         style="object-position:55% 22%" alt="">
   </div>
   <div class="hero__scrim"></div>
 
