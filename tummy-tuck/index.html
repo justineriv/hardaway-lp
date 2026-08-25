@@ -173,6 +173,9 @@ strong{font-weight:600;color:inherit}
 .hero h1 .accent{color:var(--terracotta)}
 .hero .eyebrow{color:var(--pink-light)}
 .hero__sub{font-size:1.12rem;color:rgba(255,255,255,.86);line-height:1.65;max-width:52ch;margin-bottom:1.6rem}
+/* Mobile-only credential strip. Hidden on desktop, where the benefit ticks
+   already clear the fold above the form and this would only repeat them. */
+.hero__creds{display:none}
 
 .ticks{list-style:none;margin:0 0 1.8rem;padding:0;display:grid;gap:.6rem}
 .ticks li{display:flex;gap:.7rem;align-items:flex-start;color:#fff;font-size:1rem;font-weight:400}
@@ -383,8 +386,13 @@ strong{font-weight:600;color:inherit}
 .footer__desc{max-width:42ch;line-height:1.7;font-size:.87rem}
 .footer__heading{color:#fff;font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;margin-bottom:.9rem}
 .footer__ci{display:flex;gap:.65rem;align-items:flex-start;margin-bottom:.8rem}
+/* Rows whose value is a link centre instead, because the link carries a 44px
+   tap target and a top-aligned icon would sit above its own text. */
+.footer__ci:has(a){align-items:center;margin-bottom:0}
 .footer__ci svg{width:17px;height:17px;flex:none;margin-top:.25rem;color:var(--champagne)}
+.footer__ci:has(a) svg{margin-top:0}
 .footer__ci a,.footer__ci span{color:rgba(255,255,255,.84)}
+.footer__ci a{display:inline-flex;align-items:center;min-height:44px}
 .footer__ci a:hover{color:var(--champagne)}
 .footer__social{display:flex;gap:.55rem;margin-top:1.1rem}
 .social-link{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.09);color:#fff;transition:background var(--t-base),transform var(--t-base)}
@@ -394,7 +402,7 @@ strong{font-weight:600;color:inherit}
 .social-link:hover{background:var(--champagne);color:var(--ink);transform:translateY(-2px)}
 .footer__bottom{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:space-between;align-items:center;padding-top:1.1rem;font-size:.81rem}
 .footer__legal{display:flex;gap:1.3rem;flex-wrap:wrap}
-.footer__legal a{color:rgba(255,255,255,.7)}
+.footer__legal a{color:rgba(255,255,255,.7);display:inline-flex;align-items:center;min-height:44px}
 .footer__legal a:hover{color:var(--champagne)}
 .disclaimer{background:#241a14;color:rgba(255,255,255,.55);font-size:.76rem;line-height:1.65;padding-block:1.25rem;margin-top:var(--space-lg)}
 .disclaimer strong{color:rgba(255,255,255,.78)}
@@ -421,11 +429,24 @@ strong{font-weight:600;color:inherit}
   .hero__copy{display:contents}
   .hero__copy > .eyebrow{order:1}
   .hero__copy > h1{order:2}
-  .hero__copy > .hero__sub{order:3;margin-bottom:1.4rem}
-  .hero__grid > .lead-card{order:4;margin-bottom:1.6rem}
-  .hero__copy > .ticks{order:5;margin-bottom:1.4rem}
-  .hero__copy > p{order:6;margin-bottom:1.1rem}
-  .hero__copy > .hero__phone-cta{order:7}
+  .hero__copy > .hero__sub{order:3;margin-bottom:1.1rem}
+  /* Trust before the ask. On mobile the benefit ticks fall BELOW the form, so
+     without this strip the page asks for a phone number before it offers a
+     single reason to trust her — against an ICP whose stated first barrier is
+     credentials. Compact by design: one wrapped line, not a second tick list. */
+  .hero__copy > .hero__creds{order:4}
+  .hero__grid > .lead-card{order:5;margin-bottom:1.6rem}
+  .hero__copy > .ticks{order:6;margin-bottom:1.4rem}
+  .hero__copy > p{order:7;margin-bottom:1.1rem}
+  .hero__copy > .hero__phone-cta{order:8}
+  .hero__creds{
+    display:flex;flex-wrap:wrap;align-items:center;gap:.3rem 0;
+    list-style:none;margin:0 0 1.3rem;padding:0;
+    color:var(--champagne);font-size:.82rem;font-weight:500;letter-spacing:.01em;line-height:1.4;
+  }
+  .hero__creds li{display:inline-flex;align-items:center}
+  .hero__creds li + li::before{content:"";width:3px;height:3px;border-radius:50%;
+    background:currentColor;opacity:.55;margin:0 .6rem}
   .cards,.steps{grid-template-columns:1fr}
   .split,.fin__grid,.close-band__grid,.loc__grid{grid-template-columns:1fr;gap:var(--space-2xl)}
   .rail__item{font-size:.85rem;gap:.45rem}
@@ -481,8 +502,14 @@ strong{font-weight:600;color:inherit}
    ========================================================================== */
 .fin__card img{max-width:320px;margin-inline:auto}
 /* secondary, lower-commitment action in the hero */
+/* A step with no photo. Text is held to a readable measure instead of running
+   the full sheet width, which is what a second column used to prevent. */
+.split--solo{grid-template-columns:minmax(0,1fr)}
+.split--solo > div{max-width:70ch}
+/* Standalone links get a 44px tap target. Links set inline inside a sentence
+   are exempt from that rule and are deliberately left alone. */
 .arrow-link{display:inline-flex;align-items:center;gap:.5rem;color:var(--champagne);
-  font-weight:600;font-size:.95rem}
+  font-weight:600;font-size:.95rem;min-height:44px}
 .arrow-link svg{width:16px;height:16px;transition:transform var(--t-base)}
 .arrow-link:hover{color:#fff}
 .arrow-link:hover svg{transform:translate(3px,-3px)}
@@ -524,6 +551,12 @@ strong{font-weight:600;color:inherit}
   <div class="hero__bg">
     <img fetchpriority="high" decoding="async"
          src="https://michellehardawaymd.com/wp-content/uploads/2020/03/AdobeStock_131210770-scaled-1-2048x1366.jpeg"
+         srcset="https://michellehardawaymd.com/wp-content/uploads/2020/03/AdobeStock_131210770-scaled-1-768x512.jpeg 768w,
+                 https://michellehardawaymd.com/wp-content/uploads/2020/03/AdobeStock_131210770-scaled-1-1024x683.jpeg 1024w,
+                 https://michellehardawaymd.com/wp-content/uploads/2020/03/AdobeStock_131210770-scaled-1-1536x1024.jpeg 1536w,
+                 https://michellehardawaymd.com/wp-content/uploads/2020/03/AdobeStock_131210770-scaled-1-2048x1366.jpeg 2048w,
+                 https://michellehardawaymd.com/wp-content/uploads/2020/03/AdobeStock_131210770-scaled-1-2048x1366.jpeg 2048w"
+         sizes="100vw"
          width="2048" height="1366" alt="">
   </div>
   <div class="hero__scrim"></div>
@@ -533,6 +566,12 @@ strong{font-weight:600;color:inherit}
       <span class="eyebrow">Body Contouring &middot; Farmington Hills, Michigan</span>
       <h1>Tummy Tuck</h1>
       <p class="hero__sub">Achieve a smoother, firmer abdomen with a tummy tuck by Dr. Michelle Hardaway, a board-certified Michigan Plastic Surgeon known for natural results.</p>
+
+      <ul class="hero__creds" aria-label="Credentials">
+        <li>American Board of Plastic Surgery</li>
+        <li>QUAD A Accredited</li>
+        <li>20+ Years in Michigan</li>
+      </ul>
 
       <ul class="ticks">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><span>Loose skin diet and exercise cannot fix, removed</span></li>
@@ -692,13 +731,7 @@ strong{font-weight:600;color:inherit}
       </div>
     </div>
 
-    <div class="split reveal">
-      <div class="split__media">
-        <img src="https://michellehardawaymd.com/wp-content/uploads/2024/06/location-1-1024x626.jpg"
-             width="1024" height="626" loading="lazy" decoding="async"
-             style="width:100%;border-radius:var(--radius-lg);box-shadow:var(--shadow-md)"
-             alt="The Aesthetic Plastic Surgery and Laser Center in Farmington Hills, Michigan">
-      </div>
+    <div class="split split--solo reveal">
       <div>
         <span class="stat-line">Step 02 &middot; Surgery and aftercare</span>
         <p class="lede">Excess skin and fat are removed and the abdominal muscles are tightened, producing a flatter, smoother and more toned abdominal profile. Dr. Hardaway and her team then guide you through the recovery process.</p>
