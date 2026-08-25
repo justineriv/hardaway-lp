@@ -522,15 +522,40 @@ strong{font-weight:600;color:inherit}
 /* The step-by-step section: both steps in column one, one photo spanning both
    rows in column two. Top-aligned, so the first heading and the photo start on
    the same line rather than the text floating in the middle of a taller image. */
-.split--steps{align-items:start;row-gap:var(--space-2xl)}
-.split--steps > .steps__step{grid-column:1}
-.split--steps > .split__media{grid-column:2;grid-row:1 / span 2;align-self:start}
-/* This block sits after the responsive section, so the single-column override
-   has to be repeated here or the explicit grid-column above wins at 390px and
-   the section renders as two 130px columns. */
+/* Step-by-step section — no photography. Each step is a card carrying a numbered
+   badge, so a step is a contained object rather than a paragraph floating in the
+   section. The badge borrows the .card__icon treatment so the steps read as part
+   of the same family as the at-a-glance cards above them. */
+.steps{
+  list-style:none;margin:0;padding:0;
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-lg);
+  counter-reset:step;
+}
+.step{
+  display:flex;gap:var(--space-lg);align-items:flex-start;
+  background:var(--white);border:1px solid var(--line);border-radius:var(--radius);
+  padding:var(--space-xl);box-shadow:var(--shadow-sm);
+  transition:transform var(--t-base),box-shadow var(--t-base),border-color var(--t-base);
+}
+.step:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--terracotta)}
+.step__num{
+  flex:none;width:52px;height:52px;border-radius:14px;display:grid;place-items:center;
+  background:linear-gradient(140deg,var(--pink-light) 0%,var(--champagne-light) 100%);
+  color:var(--warm-brown);font-size:1.05rem;font-weight:700;letter-spacing:.01em;
+  font-variant-numeric:tabular-nums;
+}
+.step__body{min-width:0}
+.step__title{margin:.35rem 0 .6rem;font-size:1.22rem}
+.step__body p{font-size:.95rem;line-height:1.7;margin:0}
+.step__body p + p{margin-top:.8rem}
 @media (max-width:1024px){
-  .split--steps > .steps__step,
-  .split--steps > .split__media{grid-column:auto;grid-row:auto}
+  .steps{grid-template-columns:1fr}
+  /* Badge above the text, not beside it. Beside it, a 278px card leaves the
+     copy 160px wide — about twenty characters a line. */
+  .step{flex-direction:column;gap:var(--space-md);padding:var(--space-lg)}
+  .step__num{width:44px;height:44px;border-radius:12px;font-size:.95rem}
+  .step__body{width:100%}
+  .step__title{margin-top:0}
 }
 /* Standalone links get a 44px tap target. Links set inline inside a sentence
    are exempt from that rule and are deliberately left alone. */
@@ -745,23 +770,23 @@ strong{font-weight:600;color:inherit}
       <h2>Your Blepharoplasty, Step by Step</h2>
     </div>
 
-    <div class="split split--steps reveal">
-      <div class="steps__step">
-        <span class="stat-line">Step 01 &middot; Planning and anaesthesia</span>
-        <p class="lede">Eyelid surgery can address excess skin on the upper eyelids, puffiness in the lower eyelids, and fine wrinkles around the eyes. Dr. Hardaway builds a plan around which of those apply to you. The procedure is typically performed under local anesthesia with sedation, so you stay comfortable throughout.</p>
-      </div>
-      <div class="split__media">
-        <img src="https://michellehardawaymd.com/wp-content/uploads/2020/03/facial-cosmetic-1-1024x680.jpg"
-             width="1024" height="680" loading="lazy" decoding="async"
-             style="width:100%;border-radius:var(--radius-lg);box-shadow:var(--shadow-md)"
-             alt="Facial cosmetic surgery consultation at the Farmington Hills practice">
-      </div>
-      <div class="steps__step">
-        <span class="stat-line">Step 02 &middot; Surgery and recovery</span>
-        <p class="lede">Dr. Hardaway makes precise incisions along the natural creases of the eyelids to minimise visible scarring. Excess skin, fat and muscle are removed or repositioned to create a smoother, more youthful eye contour.</p>
-        <p style="margin-top:1rem">Recovery is generally quick. Most patients return to normal activities within one to two weeks, and the swelling and bruising that are common at first subside rapidly.</p>
-      </div>
-    </div>
+    <ol class="steps reveal">
+        <li class="step">
+          <span class="step__num" aria-hidden="true">01</span>
+          <div class="step__body">
+            <h3 class="step__title">Planning and anaesthesia</h3>
+            <p>Eyelid surgery can address excess skin on the upper eyelids, puffiness in the lower eyelids, and fine wrinkles around the eyes. Dr. Hardaway builds a plan around which of those apply to you. The procedure is typically performed under local anesthesia with sedation, so you stay comfortable throughout.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step__num" aria-hidden="true">02</span>
+          <div class="step__body">
+            <h3 class="step__title">Surgery and recovery</h3>
+            <p>Dr. Hardaway makes precise incisions along the natural creases of the eyelids to minimise visible scarring. Excess skin, fat and muscle are removed or repositioned to create a smoother, more youthful eye contour.</p>
+            <p>Recovery is generally quick. Most patients return to normal activities within one to two weeks, and the swelling and bruising that are common at first subside rapidly.</p>
+          </div>
+        </li>
+      </ol>
   </div>
 </section>
 
