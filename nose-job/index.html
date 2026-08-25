@@ -463,6 +463,9 @@ strong{font-weight:600;color:inherit}
     background:currentColor;opacity:.55;margin:0 .6rem}
   .cards,.steps{grid-template-columns:1fr}
   .split,.fin__grid,.close-band__grid,.loc__grid{grid-template-columns:1fr;gap:var(--space-2xl)}
+  /* One column: DOM order already reads step 01, photo, step 02. */
+  .split--steps > .steps__step,
+  .split--steps > .split__media{grid-column:auto;grid-row:auto}
   .rail__item{font-size:.85rem;gap:.45rem}
   .rail__item svg{width:18px;height:18px}
   .footer__top{grid-template-columns:1fr 1fr}
@@ -516,10 +519,19 @@ strong{font-weight:600;color:inherit}
    ========================================================================== */
 .fin__card img{max-width:320px;margin-inline:auto}
 /* secondary, lower-commitment action in the hero */
-/* A step with no photo. Text is held to a readable measure instead of running
-   the full sheet width, which is what a second column used to prevent. */
-.split--solo{grid-template-columns:minmax(0,1fr)}
-.split--solo > div{max-width:70ch}
+/* The step-by-step section: both steps in column one, one photo spanning both
+   rows in column two. Top-aligned, so the first heading and the photo start on
+   the same line rather than the text floating in the middle of a taller image. */
+.split--steps{align-items:start;row-gap:var(--space-2xl)}
+.split--steps > .steps__step{grid-column:1}
+.split--steps > .split__media{grid-column:2;grid-row:1 / span 2;align-self:start}
+/* This block sits after the responsive section, so the single-column override
+   has to be repeated here or the explicit grid-column above wins at 390px and
+   the section renders as two 130px columns. */
+@media (max-width:1024px){
+  .split--steps > .steps__step,
+  .split--steps > .split__media{grid-column:auto;grid-row:auto}
+}
 /* Standalone links get a 44px tap target. Links set inline inside a sentence
    are exempt from that rule and are deliberately left alone. */
 .arrow-link{display:inline-flex;align-items:center;gap:.5rem;color:var(--champagne);
@@ -733,8 +745,8 @@ strong{font-weight:600;color:inherit}
       <h2>Your Rhinoplasty, Step by Step</h2>
     </div>
 
-    <div class="split reveal" style="margin-bottom:var(--space-3xl)">
-      <div>
+    <div class="split split--steps reveal">
+      <div class="steps__step">
         <span class="stat-line">Step 01 &middot; The surgical plan</span>
         <p class="lede">At your consultation Dr. Hardaway discusses your goals, assesses your needs and develops a tailored plan. Rhinoplasty is performed under general or local anesthesia, using precise incisions to access and reshape the nasal structure.</p>
         <p style="margin-top:1rem">She offers both techniques: open rhinoplasty, with a small incision along the columella for greater visibility, and closed rhinoplasty, with incisions inside the nostrils that leave no visible scars.</p>
@@ -745,10 +757,7 @@ strong{font-weight:600;color:inherit}
              style="width:100%;border-radius:var(--radius-lg);box-shadow:var(--shadow-md)"
              alt="Rhinoplasty consultation at the Farmington Hills practice">
       </div>
-    </div>
-
-    <div class="split split--solo reveal">
-      <div>
+      <div class="steps__step">
         <span class="stat-line">Step 02 &middot; Recovery and results</span>
         <p class="lede">Most patients return to work within one to two weeks after surgery, though some swelling and bruising may last for several months. Final results become visible within a year, with permanent improvements to both appearance and function.</p>
       </div>
