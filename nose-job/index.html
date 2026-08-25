@@ -529,13 +529,16 @@ strong{font-weight:600;color:inherit}
    badge, so a step is a contained object rather than a paragraph floating in the
    section. The badge borrows the .card__icon treatment so the steps read as part
    of the same family as the at-a-glance cards above them. */
-.steps{
-  list-style:none;margin:0;padding:0;
-  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-lg);
-  counter-reset:step;
-}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:var(--space-lg)}
+.steps--3{grid-template-columns:repeat(3,minmax(0,1fr))}
+/* Four go two-by-two. Four across at the sheet width leaves each card about
+   thirty characters a line. */
+.steps--4{grid-template-columns:repeat(2,minmax(0,1fr))}
+/* Badge above the copy, not beside it. Three columns leave roughly 310px inside
+   a card; a 52px badge on the same row would cut the text to about thirty
+   characters a line. */
 .step{
-  display:flex;gap:var(--space-lg);align-items:flex-start;
+  display:flex;flex-direction:column;gap:var(--space-md);
   background:var(--white);border:1px solid var(--line);border-radius:var(--radius);
   padding:var(--space-xl);box-shadow:var(--shadow-sm);
   transition:transform var(--t-base),box-shadow var(--t-base),border-color var(--t-base);
@@ -547,18 +550,15 @@ strong{font-weight:600;color:inherit}
   color:var(--warm-brown);font-size:1.05rem;font-weight:700;letter-spacing:.01em;
   font-variant-numeric:tabular-nums;
 }
-.step__body{min-width:0}
-.step__title{margin:.35rem 0 .6rem;font-size:1.22rem}
+.step__body{min-width:0;width:100%}
+.step__title{margin:0 0 .6rem;font-size:1.18rem}
 .step__body p{font-size:.95rem;line-height:1.7;margin:0}
 .step__body p + p{margin-top:.8rem}
 @media (max-width:1024px){
-  .steps{grid-template-columns:1fr}
-  /* Badge above the text, not beside it. Beside it, a 278px card leaves the
-     copy 160px wide — about twenty characters a line. */
-  .step{flex-direction:column;gap:var(--space-md);padding:var(--space-lg)}
+  .steps--3,.steps--4{grid-template-columns:1fr}
+  .steps{gap:var(--space-md)}
+  .step{padding:var(--space-lg)}
   .step__num{width:44px;height:44px;border-radius:12px;font-size:.95rem}
-  .step__body{width:100%}
-  .step__title{margin-top:0}
 }
 /* Standalone links get a 44px tap target. Links set inline inside a sentence
    are exempt from that rule and are deliberately left alone. */
@@ -772,17 +772,23 @@ strong{font-weight:600;color:inherit}
       <h2>Your Rhinoplasty, Step by Step</h2>
     </div>
 
-    <ol class="steps reveal">
+    <ol class="steps steps--3 reveal">
         <li class="step">
           <span class="step__num" aria-hidden="true">01</span>
           <div class="step__body">
             <h3 class="step__title">The surgical plan</h3>
             <p>At your consultation Dr. Hardaway discusses your goals, assesses your needs and develops a tailored plan. Rhinoplasty is performed under general or local anesthesia, using precise incisions to access and reshape the nasal structure.</p>
-            <p>She offers both techniques: open rhinoplasty, with a small incision along the columella for greater visibility, and closed rhinoplasty, with incisions inside the nostrils that leave no visible scars.</p>
           </div>
         </li>
         <li class="step">
           <span class="step__num" aria-hidden="true">02</span>
+          <div class="step__body">
+            <h3 class="step__title">Open or closed</h3>
+            <p>She offers both techniques: open rhinoplasty, with a small incision along the columella for greater visibility, and closed rhinoplasty, with incisions inside the nostrils that leave no visible scars.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step__num" aria-hidden="true">03</span>
           <div class="step__body">
             <h3 class="step__title">Recovery and results</h3>
             <p>Most patients return to work within one to two weeks after surgery, though some swelling and bruising may last for several months. Final results become visible within a year, with permanent improvements to both appearance and function.</p>

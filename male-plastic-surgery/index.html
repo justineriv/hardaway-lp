@@ -529,13 +529,16 @@ strong{font-weight:600;color:inherit}
    badge, so a step is a contained object rather than a paragraph floating in the
    section. The badge borrows the .card__icon treatment so the steps read as part
    of the same family as the at-a-glance cards above them. */
-.steps{
-  list-style:none;margin:0;padding:0;
-  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-lg);
-  counter-reset:step;
-}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:var(--space-lg)}
+.steps--3{grid-template-columns:repeat(3,minmax(0,1fr))}
+/* Four go two-by-two. Four across at the sheet width leaves each card about
+   thirty characters a line. */
+.steps--4{grid-template-columns:repeat(2,minmax(0,1fr))}
+/* Badge above the copy, not beside it. Three columns leave roughly 310px inside
+   a card; a 52px badge on the same row would cut the text to about thirty
+   characters a line. */
 .step{
-  display:flex;gap:var(--space-lg);align-items:flex-start;
+  display:flex;flex-direction:column;gap:var(--space-md);
   background:var(--white);border:1px solid var(--line);border-radius:var(--radius);
   padding:var(--space-xl);box-shadow:var(--shadow-sm);
   transition:transform var(--t-base),box-shadow var(--t-base),border-color var(--t-base);
@@ -547,18 +550,15 @@ strong{font-weight:600;color:inherit}
   color:var(--warm-brown);font-size:1.05rem;font-weight:700;letter-spacing:.01em;
   font-variant-numeric:tabular-nums;
 }
-.step__body{min-width:0}
-.step__title{margin:.35rem 0 .6rem;font-size:1.22rem}
+.step__body{min-width:0;width:100%}
+.step__title{margin:0 0 .6rem;font-size:1.18rem}
 .step__body p{font-size:.95rem;line-height:1.7;margin:0}
 .step__body p + p{margin-top:.8rem}
 @media (max-width:1024px){
-  .steps{grid-template-columns:1fr}
-  /* Badge above the text, not beside it. Beside it, a 278px card leaves the
-     copy 160px wide — about twenty characters a line. */
-  .step{flex-direction:column;gap:var(--space-md);padding:var(--space-lg)}
+  .steps--3,.steps--4{grid-template-columns:1fr}
+  .steps{gap:var(--space-md)}
+  .step{padding:var(--space-lg)}
   .step__num{width:44px;height:44px;border-radius:12px;font-size:.95rem}
-  .step__body{width:100%}
-  .step__title{margin-top:0}
 }
 /* Standalone links get a 44px tap target. Links set inline inside a sentence
    are exempt from that rule and are deliberately left alone. */
@@ -772,19 +772,25 @@ strong{font-weight:600;color:inherit}
       <h2>What to Expect, Step by Step</h2>
     </div>
 
-    <ol class="steps reveal">
+    <ol class="steps steps--3 reveal">
         <li class="step">
           <span class="step__num" aria-hidden="true">01</span>
           <div class="step__body">
             <h3 class="step__title">A private consultation</h3>
             <p>We understand that taking the first step toward cosmetic enhancement can feel significant for men. Dr. Hardaway discusses your goals in a discreet, judgment-free environment, examines you and recommends which procedures will get you there.</p>
-            <p>Good candidates are men in overall good health, with realistic expectations, who want to improve specific areas that make them self-conscious. Being a non-smoker matters, as do certain medications that interfere with surgery.</p>
           </div>
         </li>
         <li class="step">
           <span class="step__num" aria-hidden="true">02</span>
           <div class="step__body">
-            <h3 class="step__title">Your procedure and recovery</h3>
+            <h3 class="step__title">Whether it suits you</h3>
+            <p>Good candidates are men in overall good health, with realistic expectations, who want to improve specific areas that make them self-conscious. Being a non-smoker matters, as do certain medications that interfere with surgery.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step__num" aria-hidden="true">03</span>
+          <div class="step__body">
+            <h3 class="step__title">Procedure and recovery</h3>
             <p>Recovery depends entirely on what you have done. Minimally invasive options such as laser treatments require little to no downtime. Most men return to work within 7 to 10 days after eyelid surgery, within 3 to 5 days after liposuction, and after 2 to 3 weeks following a male tummy tuck.</p>
             <p>Major surgery generally involves one to two weeks of rest followed by restricted activity for up to six weeks. Dr. Hardaway gives you detailed recovery instructions for your own procedure.</p>
           </div>
