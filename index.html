@@ -92,8 +92,10 @@ strong{font-weight:600;color:inherit}
 .container{width:100%;max-width:var(--container-max);margin-inline:auto;padding-inline:var(--gutter)}
 .section{padding-block:var(--section-y)}
 .section--tight{padding-block:var(--section-y-tight)}
-.bg-cream{background:linear-gradient(180deg,#fdf8f5 0%,#faeee9 100%)}
-.bg-sand{background:linear-gradient(180deg,#f9ece7 0%,#f4e3dc 100%)}
+.bg-cream{background:var(--champagne)}
+.bg-sand{background:var(--champagne)}
+.bg-cream .btn--outline,.bg-sand .btn--outline{background:var(--white);border-color:var(--white)}
+.bg-cream,.bg-sand{--rose-text:#7f4232}
 .bg-dark{background:var(--espresso);color:rgba(255,255,255,.80)}
 .bg-dark h2,.bg-dark h3{color:var(--white)}
 
@@ -233,7 +235,7 @@ strong{font-weight:600;color:inherit}
 .card p{font-size:.95rem;line-height:1.7}
 
 /* ---------- Split ---------- */
-.split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-4xl);align-items:center}
+.split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-4xl);align-items:start}
 .cred-panel{background:var(--sand);border-radius:var(--radius);padding:var(--space-xl);border-left:4px solid var(--terracotta-deep)}
 .cred-list{list-style:none;margin:0;padding:0;display:grid;gap:1rem}
 .cred-list li{display:flex;gap:.9rem;align-items:flex-start;font-size:1.06rem;line-height:1.62;color:var(--ink-soft)}
@@ -306,7 +308,7 @@ strong{font-weight:600;color:inherit}
 .elf-wrap{background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:var(--space-lg);min-height:120px}
 
 /* ---------- Financing ---------- */
-.fin__grid{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:var(--space-4xl);align-items:center}
+.fin__grid{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:var(--space-4xl);align-items:start}
 .fin__card{background:var(--white);border-radius:var(--radius);padding:var(--space-lg);box-shadow:var(--shadow-md)}
 .fin__list{list-style:none;margin:1.4rem 0 0;padding:0;display:grid;gap:.65rem}
 .fin__list li{display:flex;gap:.7rem;align-items:flex-start;font-size:.95rem;color:rgba(255,255,255,.86)}
@@ -397,7 +399,8 @@ strong{font-weight:600;color:inherit}
 .is-sent form{display:none}
 
 /* ---------- Closing band ---------- */
-.close-band__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(380px,.82fr);gap:var(--space-4xl);align-items:center}
+.close-band__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(380px,.82fr);gap:var(--space-4xl);align-items:start}
+@media (min-width:1025px){.split>*,.fin__grid>*,.close-band__grid>*{position:sticky;top:calc(var(--header-h) + 24px)}}
 
 /* ---------- Footer ---------- */
 .footer{background:var(--espresso);color:rgba(255,255,255,.7);padding:var(--space-3xl) 0 0;font-size:.9rem}
@@ -1011,7 +1014,7 @@ strong{font-weight:600;color:inherit}
      CLOSING CTA — retains the site's "Schedule Your Visit" popup content
      as a full section rather than an interruptive modal.
      ===================================================================== -->
-<section class="section bg-sand" id="schedule-your-visit">
+<section class="section" id="schedule-your-visit">
   <div class="container close-band__grid">
     <div class="reveal">
       <span class="eyebrow">Ready when you are</span>
