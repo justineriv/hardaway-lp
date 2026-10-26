@@ -49,7 +49,7 @@
   --space-sm:.5rem; --space-md:1rem; --space-lg:1.5rem;
   --space-xl:2rem; --space-2xl:3rem; --space-3xl:4rem; --space-4xl:6rem;
 
-  --section-y:104px; --section-y-tight:76px;
+  --section-y:72px; --section-y-tight:76px;
 
   --font-sans:"Poppins",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 
@@ -118,10 +118,10 @@ strong{font-weight:600;color:inherit}
 .btn svg{width:18px;height:18px;flex:none}
 .btn--primary{background:var(--warm-brown);border-color:var(--warm-brown);color:var(--white)}
 .btn--primary:hover{background:var(--ink);border-color:var(--ink);color:var(--white);transform:translateY(-2px);box-shadow:0 14px 32px rgba(90,62,32,.32)}
-.btn--outline{background:transparent;border-color:var(--warm-brown);color:var(--warm-brown)}
-.btn--outline:hover{background:var(--warm-brown);color:var(--white);transform:translateY(-2px)}
-.btn--onDark{background:transparent;border-color:rgba(255,255,255,.55);color:var(--white)}
-.btn--onDark:hover{background:var(--white);border-color:var(--white);color:var(--ink);transform:translateY(-2px)}
+.btn--outline{background:var(--champagne);border-color:var(--champagne);color:var(--ink)}
+.btn--outline:hover{background:var(--warm-brown);border-color:var(--warm-brown);color:var(--white);transform:translateY(-2px)}
+.btn--onDark{background:var(--white);border-color:var(--white);color:var(--ink)}
+.btn--onDark:hover{background:var(--champagne-light);border-color:var(--champagne-light);color:var(--ink);transform:translateY(-2px)}
 .btn--light{background:var(--champagne);border-color:var(--champagne);color:var(--ink)}
 .btn--light:hover{background:var(--white);border-color:var(--white);transform:translateY(-2px)}
 .btn--sm{padding:.8rem 1.75rem;font-size:.98rem}
@@ -183,13 +183,14 @@ strong{font-weight:600;color:inherit}
 
 .hero__phone-cta{
   display:inline-flex;align-items:center;gap:.85rem;padding:.9rem 1.5rem .9rem 1.1rem;
-  border-radius:var(--radius-pill);background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.26);
-  backdrop-filter:blur(8px);color:#fff;
+  border-radius:var(--radius-pill);background:var(--white);border:1px solid var(--white);
+  color:var(--ink);box-shadow:0 14px 34px rgba(20,12,9,.34);
+  transition:background var(--t-base),transform var(--t-base),box-shadow var(--t-base);
 }
-.hero__phone-cta svg{width:34px;height:34px;padding:8px;border-radius:50%;background:var(--terracotta);color:#fff;flex:none}
+.hero__phone-cta svg{width:34px;height:34px;padding:8px;border-radius:50%;background:var(--terracotta-deep);color:#fff;flex:none}
 .hero__phone-cta b{display:block;font-size:1.18rem;font-weight:600;line-height:1.25;letter-spacing:.01em}
-.hero__phone-cta span{font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.72)}
-.hero__phone-cta:hover{background:rgba(255,255,255,.17);color:#fff}
+.hero__phone-cta span{font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--rose-text)}
+.hero__phone-cta:hover{background:var(--champagne-light);color:var(--ink);transform:translateY(-2px);box-shadow:0 18px 40px rgba(20,12,9,.40)}
 
 /* Form card in the hero */
 .lead-card{
@@ -323,6 +324,10 @@ strong{font-weight:600;color:inherit}
   box-shadow:var(--shadow-sm);padding:var(--space-xl);
 }
 .here-card .btn-row{margin-top:var(--space-lg)}
+.loc__aside{display:flex;flex-direction:column;gap:var(--space-lg);height:100%}
+.loc__grid{align-items:stretch}
+.loc__map{flex:1;min-height:280px;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-sm);background:var(--sand)}
+.loc__map iframe{display:block;width:100%;height:100%;min-height:280px;border:0}
 .here-list{margin:0}
 .here-card h3{font-size:1.28rem;margin-bottom:1.1rem}
 .here-row{display:grid;grid-template-columns:88px 1fr;gap:1rem;padding:.75rem 0;border-top:1px solid var(--line);align-items:start}
@@ -655,7 +660,7 @@ strong{font-weight:600;color:inherit}
       <article class="card">
         <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg></div>
         <h3>Two decades in Detroit teaching hospitals</h3>
-        <p>Former Chief of Plastic and Reconstructive Surgery at Detroit Receiving Hospital and Assistant Clinical Professor of Surgery at Wayne State University School of Medicine.</p>
+        <p>Former Chief of Plastic and Reconstructive Surgery and Director of the Burn Center at Detroit Receiving Hospital.</p>
       </article>
     </div>
   </div>
@@ -672,12 +677,13 @@ strong{font-weight:600;color:inherit}
 
       <div class="cred-panel" style="margin-top:1.6rem">
         <ul class="cred-list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><span><strong>Former Chief of Plastic and Reconstructive Surgery</strong> at Detroit Receiving Hospital (Level I Trauma Center)</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><span><strong>Assistant Clinical Professor of Surgery</strong> at Wayne State University School of Medicine</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><span><strong>Active Hospital Privileges</strong> at Corewell Health (Beaumont), Providence Hospital – Henry Ford Health and the Detroit Medical Center Hospitals</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><span><strong>QUAD A Accredited Surgical Center</strong>, ensuring hospital-grade safety in a private, comfortable setting</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><span><strong>Former Chief of Plastic and Reconstructive Surgery</strong> at Detroit Receiving Hospital, where she also served as Director of its Burn Center</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><span><strong>Surgical Training</strong>: M.D. from Wayne State University School of Medicine, general surgery residency at North Shore University Hospital (Chief Resident), plastic surgery residency at Nassau County Medical Center, and a burn fellowship at Wayne State University</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><span><strong>Hospital Affiliations</strong> with Corewell Health William Beaumont University Hospital, Henry Ford Providence Southfield Hospital, the Detroit Medical Center Hospitals and Henry Ford St. John Hospital</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><span><strong>QUAD A Accredited Surgical Suite</strong> in Farmington Hills, where she operates</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><span><strong>Fellow of the American College of Surgeons</strong> (F.A.C.S.)</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><span><strong>Board Certified</strong> by the American Board of Plastic Surgery</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><span><strong>Member</strong> of the American Society of Plastic Surgeons and the American Society for Aesthetic Plastic Surgery</span></li>
         </ul>
       </div>
 
@@ -972,7 +978,7 @@ strong{font-weight:600;color:inherit}
       <p class="note" style="margin-top:1.4rem;font-size:1rem">Our location places you in the heart of Farmington Hills&rsquo; established medical corridor, surrounded by trusted healthcare institutions and convenient amenities.</p>
     </div>
 
-    <div class="reveal">
+    <div class="reveal loc__aside">
       <div class="here-card">
         <h3>Getting here</h3>
         <dl class="here-list">
@@ -993,6 +999,9 @@ strong{font-weight:600;color:inherit}
           <a class="btn btn--primary" href="https://maps.google.com/maps/dir//27920+Orchard+Lake+Rd+Farmington+Hills+MI+48334" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Get directions</a>
           <a class="btn btn--outline" data-cta="body-secondary" href="tel:2487800558"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call the office</a>
         </div>
+      </div>
+      <div class="loc__map">
+        <iframe title="Map: 27920 Orchard Lake Rd, Farmington Hills, MI 48334" src="https://www.google.com/maps?q=27920+Orchard+Lake+Rd,+Farmington+Hills,+MI+48334&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </div>
